@@ -1,8 +1,6 @@
 -- =====================
 -- ELECTION QUERY
 -- =====================
-select * from candidates;
-select * from results;
 
 with cte_grouped as (
     select 
@@ -27,9 +25,6 @@ group by party;
 -- ====================================
 -- ADVERTISING SYSTEM DEVIATIONS REPORT
 -- ====================================
-select * from customers;
-select * from campaigns;
-select * from events;
 
 with cte_count as (    
     select
@@ -72,6 +67,7 @@ order by cate.status desc
 -- ====================================
 -- ELECTION EXIT POLL BY STATE REPORT
 -- ====================================
+
 with cte_grouped as (   
     select 
         distinct
