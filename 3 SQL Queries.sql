@@ -25,7 +25,6 @@ group by party;
 -- ====================================
 -- ADVERTISING SYSTEM DEVIATIONS REPORT
 -- ====================================
-
 with cte_count as (    
     select
         c.customer_id,
@@ -56,13 +55,12 @@ select
     cate.status,
     CONCAT(cust.first_name, ' ', cust.last_name) as customer_name,
     cate.campaign,
-    cate.success_count,
-    cate.failure_count
+    cate.success_count + cate.failure_count as total
 from cte_category cate 
 join customers cust on cate.customer_id = cust.id
 join max_values mv on cate.success_count = mv.max_success_count 
     or cate.failure_count = mv.max_failure_count
-order by cate.status desc
+order by cate.status desc;
 
 -- ====================================
 -- ELECTION EXIT POLL BY STATE REPORT
